@@ -11,12 +11,12 @@ public class FileReader {
     public Profile getDataFromFile(File file) {
         StringBuilder stringBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines(file.toPath())) {
-            stream.forEach((line) -> stringBuilder.append(line).append("\n"));
+            stream.forEach(line -> stringBuilder.append(line).append("\n"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         String[] everything = stringBuilder.toString().split("\n");
-        Map<String, String> profileMap = new HashMap<String, String>();
+        Map<String, String> profileMap = new HashMap<>();
 
         for (String line : everything) {
             String[] pair = line.split(": ");
